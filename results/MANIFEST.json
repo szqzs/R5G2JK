@@ -1,0 +1,76 @@
+{
+  "files": [
+    {
+      "bytes": 8889,
+      "path": "results/c12_relation/c12_relation_certificate.json",
+      "sha256": "eb81d91401df174c6bdcde8ae5088f6d2d14eaf46a35b6564a988876d73d4341"
+    },
+    {
+      "bytes": 2300,
+      "path": "results/c12_relation/c12_relation_over_q_certificate.json",
+      "sha256": "81a2c66b2128c117ac6209c859749d836a36d0536b02cbeb89b5c68188db7cdb"
+    },
+    {
+      "bytes": 955,
+      "path": "results/full_rank/by_degree/c11.json",
+      "sha256": "3710c76ef75774768d01075e3f54dd71048cb9e188ba92e7d6f9c383a5e2f5b1"
+    },
+    {
+      "bytes": 1167,
+      "path": "results/full_rank/by_degree/c13.json",
+      "sha256": "3b2b407a17eea55c7b1d5f49ccfb196fccaa1b609504374e847e418fa9149b16"
+    },
+    {
+      "bytes": 1078,
+      "path": "results/full_rank/by_degree/c14.json",
+      "sha256": "87b2a8029a0677c5d3849f90cd8a18d27996703205625fad1efe61b15f6bbf81"
+    },
+    {
+      "bytes": 1165,
+      "path": "results/full_rank/by_degree/c15.json",
+      "sha256": "0ea66d3d264f68871b6ea967810a55c441892365dbc7ab814740661424ed451a"
+    },
+    {
+      "bytes": 1162,
+      "path": "results/full_rank/by_degree/c16.json",
+      "sha256": "bb87724827372c393883fbe21185e5b8740f5a09759918741be40aa13bf5e82e"
+    },
+    {
+      "bytes": 1166,
+      "path": "results/full_rank/by_degree/c17.json",
+      "sha256": "266e3be49bde13635113f71a169eebbe2c426e79d2f99f611e596938fbc33090"
+    },
+    {
+      "bytes": 958,
+      "path": "results/full_rank/by_degree/c18.json",
+      "sha256": "1a60ec74cc0fc3a5603505af939ca55931003f2c14fbb90b1b80899ff118633b"
+    },
+    {
+      "bytes": 954,
+      "path": "results/full_rank/by_degree/c19.json",
+      "sha256": "cd2c2c7d262f5be09aad9318d3bebe208bd88ecdd0c0a8a047dd4474707c0f5b"
+    },
+    {
+      "bytes": 955,
+      "path": "results/full_rank/by_degree/c20.json",
+      "sha256": "d4751c0f1ce6436e091de6b602489c68acbe78ef0300d87d05650c0c2a6d7ecf"
+    },
+    {
+      "bytes": 955,
+      "path": "results/full_rank/by_degree/c21.json",
+      "sha256": "f2f4cc0626596277b4c33bb27243b0bbf485f0215b0eecde0cb2a4826c297abc"
+    },
+    {
+      "bytes": 956,
+      "path": "results/full_rank/by_degree/c22.json",
+      "sha256": "412437fed3df878a77de9125d5b531e3dab593cc7a12f6ef5f74fb9be6467141"
+    },
+    {
+      "bytes": 10610,
+      "path": "results/full_rank/full_rank_certificate.json",
+      "sha256": "a31d5a3be8d0323abdcce3fe2cf7207ca48b62b26373bf973b9ffe885a9c8c6c"
+    }
+  ],
+  "generated_at_utc": "2026-07-05T00:00:00Z",
+  "schema": "R5G2HiggsMinRel.results_manifest.v1"
+}

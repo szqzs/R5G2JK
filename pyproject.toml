@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rank5-genus2-relation"
+version = "0.1.0"
+description = "Rank-5 determinant-degree-1 genus-2 relation computation in cohomological degree 22"
+requires-python = ">=3.10"
+dependencies = [
+    "sympy>=1.12",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

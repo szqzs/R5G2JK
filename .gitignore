@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+*.egg-info/
+build/
+dist/
+
+# Local run outputs
+artifacts/
+logs/
+tmp/
+JOURNAL.md
+
+# Large recomputation artifacts
+shards/
+*.jsonl
+*.cprof
+target/
+
+# LaTeX/Macaulay2 local noise
+*.aux
+*.log
+*.out
+
+# macOS
+.DS_Store
