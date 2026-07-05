@@ -4,13 +4,6 @@ This repository records the computer-assisted part of a rank-five,
 fixed-determinant, determinant-degree-one, genus-two calculation.  The first
 relation studied here lies in cohomological degree `22`.
 
-The purpose of the repository is simple:
-
-1. state the finite linear-algebra results;
-2. say exactly where the result files are;
-3. say where the code is and what it computes;
-4. say how to reproduce the calculations.
-
 ## Setup
 
 The Python code requires Python `3.10` or newer.  The only runtime Python
