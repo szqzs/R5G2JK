@@ -38,7 +38,7 @@ First, for every Chern degree `c != 12` listed below, we calculate the rank of
 the pairing matrix modulo `p`, where
 
 ```math
-\mathbb F_p,\qquad p=2305843009213693951=2^{61}-1.
+p=2305843009213693951=2^{61}-1.
 ```
 
 We find that all these matrices have full row rank modulo `p`.  The matrices
@@ -91,7 +91,7 @@ The `c = 12` relation is:
 
 ```math
 \begin{aligned}
-R_{5,12}={}&
+{}&
 32a_2^5f_2
 -48a_2^4f_4
 -16a_2^4\gamma_{22}
