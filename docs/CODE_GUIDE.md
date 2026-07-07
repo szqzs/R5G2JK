@@ -13,7 +13,7 @@ basis elements
   -> certificates
 ```
 
-The separate Macaulay2 file checks a different finite linear-algebra statement
+The separate Macaulay2 file checks an exact rational linear-algebra statement
 about the line spanned by the `c = 12` relation.
 
 ## Main Data Model
@@ -410,31 +410,37 @@ PYTHONPATH=src pytest -q
 
 ## Macaulay2
 
-### `macaulay2/verify_unipotent_injectivity.m2`
+### `macaulay2/verify_stabilizer_lie_dimension.m2`
 
 This is the only Macaulay2 script in the repository.
 
-It checks the finite algebra assertion used after the `c = 12` relation has
-been found.  The script builds the graded super-commutative algebra, writes the
-relation `R5`, constructs the infinitesimal correction columns, and verifies
-that the linear map
+It checks an exact rational linear-algebra assertion about the displayed
+relation.  The script builds the graded super-commutative algebra `A`, writes
+the relation `R5`, lists all degree-preserving derivations of `A`, applies each
+one to `R5`, and computes the rank of the map
 
 ```math
-\Phi:\mathrm{Lie}(U)\oplus \mathbb Q\kappa\longrightarrow F^{22},
+\rho_R:\mathrm{Der}^{\mathrm{gr}}(A)\longrightarrow A^{22}/\mathbb Q R_5,
 \qquad
-(\delta,\kappa)\longmapsto \delta(R_5)-\kappa R_5
+D\longmapsto [D(R_5)].
 ```
 
-is injective over `Q`.
+The quotient is built explicitly.  The script chooses a monomial appearing in
+`R5`, uses the equation `R5 = 0` to eliminate that monomial, and records all
+remaining degree-`22` coordinates.  It then verifies
+
+```math
+\mathrm{dim}_{\mathbb Q}\ker(\rho_R)=12.
+```
 
 Run:
 
 ```bash
-M2 --script macaulay2/verify_unipotent_injectivity.m2
+M2 --script macaulay2/verify_stabilizer_lie_dimension.m2
 ```
 
 Successful output ends with:
 
 ```text
-Macaulay2 certificate passed: Phi is injective over QQ.
+Macaulay2 certificate passed: stabilizer Lie algebra dimension is 12 over QQ.
 ```

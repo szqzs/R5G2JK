@@ -170,7 +170,7 @@ The repository is organized as follows.
 src/         implementation of the pairing formula and matrix entries
 scripts/     commands for reproducing rank and relation calculations
 results/     compact committed result certificates
-macaulay2/   Macaulay2 code for the unipotent linear algebra check
+macaulay2/   Macaulay2 code for the stabilizer-dimension check
 native/      optional Rust acceleration for the residue step
 docs/        optional longer explanations
 tests/       small consistency checks
@@ -209,11 +209,28 @@ The rank computation then checks:
 - the lifted integer `c = 12` relation vector pairs to zero with all target
   columns over `Q`.
 
-The Macaulay2 script is separate.  It checks a finite linear-algebra assertion
-for the line spanned by the `c = 12` relation:
+The Macaulay2 script is separate from the Jeffrey-Kirwan pairing calculation.
+It checks an exact rational linear-algebra assertion about the displayed
+relation.  Let `A` be the free graded super-commutative algebra on the even
+generators `a_r`, `f_r` and odd generators `b_r^j` used above, and let `R5`
+be the displayed degree-`22` relation.  The script verifies that
 
 ```text
-macaulay2/verify_unipotent_injectivity.m2
+macaulay2/verify_stabilizer_lie_dimension.m2
+```
+
+computes
+
+```math
+\rho_R:\mathrm{Der}^{\mathrm{gr}}(A)\longrightarrow A^{22}/\mathbb Q R_5,
+\qquad
+D\longmapsto [D(R_5)]
+```
+
+and finds
+
+```math
+\mathrm{dim}_{\mathbb Q}\ker(\rho_R)=12.
 ```
 
 The optional Rust kernel is in:
@@ -306,7 +323,7 @@ prefer not to install the package, prefix the Python commands with
 For the Macaulay2 part, the intended command is:
 
 ```bash
-M2 --script macaulay2/verify_unipotent_injectivity.m2
+M2 --script macaulay2/verify_stabilizer_lie_dimension.m2
 ```
 
 ## Optional Longer Explanations

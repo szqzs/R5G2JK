@@ -1,14 +1,22 @@
--- Minimal Macaulay2 certificate used by rank5_stabilizer_proof.tex.
+-- Direct Macaulay2 certificate for the rank-5 stabilizer Lie algebra.
 --
--- This script verifies only the finite linear-algebra assertion used in the
--- proof: the map
+-- This script verifies the following finite linear-algebra assertion:
 --
---   Phi : Lie(U) + Q*kappa -> F^22,
---         (delta,kappa) |-> delta(R5) - kappa R5
+--   rho_R : Der^gr(A) -> A^22 / Q*R5,
+--           D |-> [D(R5)]
 --
--- is injective over Q.
+-- has kernel dimension 12 over Q.
+--
+-- The algorithm is intentionally literal:
+--
+--   1. write down the free graded super-commutative algebra A;
+--   2. write down the relation R5;
+--   3. list all degree-preserving derivations of A;
+--   4. apply each derivation to R5;
+--   5. reduce the result modulo the line Q*R5;
+--   6. compute the rank of the resulting matrix.
 
-F = QQ[
+A = QQ[
   f2,a2,f3,a3,f4,a4,f5,a5,
   b21,b22,b23,b24,
   b31,b32,b33,b34,
@@ -109,18 +117,12 @@ verifyEquals = (label, actual, expected) -> (
   if actual != expected then error(label | " expected " | toString expected | " but got " | toString actual)
 )
 
-sumList = L -> (
-  LL := toList L;
-  if #LL == 0 then 0 else sum LL
-)
-
 monomialList = poly -> if poly == 0 then {} else flatten entries monomials poly
-basisList = d -> flatten entries basis(d, F)
-isPrimitiveGenerator = m -> member(m, genVars)
-decomposableBasis = d -> select(basisList d, m -> not isPrimitiveGenerator(m))
+basisList = d -> flatten entries basis(d, A)
 
 -- The derivation sending x to h is computed as the coefficient of the
--- first-order change under x -> x + t*h.
+-- first-order change under x -> x + t*h.  The auxiliary variable t has very
+-- high degree, so it does not affect any degree used by the certificate.
 D = (poly, x, h) -> sub(diff(t, sub(poly, {x => (x + t*h)})), {t => 0})
 
 matrixFromColumns = (cols, rows) -> matrix apply(
@@ -130,25 +132,41 @@ matrixFromColumns = (cols, rows) -> matrix apply(
 
 verifyEquals("expanded R5 support", #monomialList(R5), 88)
 
-unipotentColumns = {}
+degree22Basis = basisList(22)
+verifyEquals("full degree-22 monomial count", #degree22Basis, 3868)
+
+-- Choose one monomial in R5 whose coefficient is nonzero.  In the quotient
+-- A^22 / Q*R5, this monomial is eliminated using the equation R5 = 0.
+basisIndices = toList(0..(#degree22Basis-1))
+pivotIndex = first select(basisIndices, i -> coefficient(degree22Basis#i, R5) != 0)
+pivotMonomial = degree22Basis#pivotIndex
+pivotCoefficient = coefficient(pivotMonomial, R5)
+
+quotientRows = apply(select(basisIndices, i -> i != pivotIndex), i -> degree22Basis#i)
+
+-- This is the most direct normal form modulo Q*R5: subtract the right multiple
+-- of R5 so that the pivot monomial has coefficient zero, then record all other
+-- coefficients.
+reduceModuloRelation = poly -> poly - coefficient(pivotMonomial, poly) / pivotCoefficient * R5
+
+derivationColumns = {}
 scan(0..(#genVars-1), i -> (
   x := genVars#i;
   d := generatorDegrees#i;
-  scan(decomposableBasis(d), h -> (
-    unipotentColumns = append(unipotentColumns, D(R5, x, h))
+  scan(basisList(d), h -> (
+    derivationColumns = append(derivationColumns, D(R5, x, h))
   ))
 ))
 
-verifyEquals("Lie(U) columns", #unipotentColumns, 390)
+quotientColumns = apply(derivationColumns, reduceModuloRelation)
+quotientMatrix = matrixFromColumns(quotientColumns, quotientRows)
 
--- The extra column -R5 is the infinitesimal line-rescaling parameter kappa.
-phiColumns = append(unipotentColumns, -R5)
-rowMonomials = unique flatten apply(phiColumns, c -> monomialList(c))
-phiMatrix = matrixFromColumns(phiColumns, rowMonomials)
+quotientImageRank = rank quotientMatrix
+rhoKernelDimension = #derivationColumns - quotientImageRank
 
-verifyEquals("columns of Phi", #phiColumns, 391)
-verifyEquals("full degree-22 monomial count", #basisList(22), 3868)
-verifyEquals("nonzero rows of Phi", #rowMonomials, 1976)
-verifyEquals("rank of Phi", rank phiMatrix, #phiColumns)
+verifyEquals("Der^gr(A) columns", #derivationColumns, 468)
+verifyEquals("quotient row count", #quotientRows, 3867)
+verifyEquals("rank of rho_R", quotientImageRank, 456)
+verifyEquals("kernel dimension of rho_R", rhoKernelDimension, 12)
 
-print "Macaulay2 certificate passed: Phi is injective over QQ."
+print "Macaulay2 certificate passed: stabilizer Lie algebra dimension is 12 over QQ."

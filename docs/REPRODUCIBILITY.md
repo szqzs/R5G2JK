@@ -59,7 +59,7 @@ The smoke tests check:
 The Macaulay2 certificate is:
 
 ```bash
-M2 --script macaulay2/verify_unipotent_injectivity.m2
+M2 --script macaulay2/verify_stabilizer_lie_dimension.m2
 ```
 
 ## Recompute Pairing-Matrix Results
