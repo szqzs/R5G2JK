@@ -209,30 +209,6 @@ The rank computation then checks:
 - the lifted integer `c = 12` relation vector pairs to zero with all target
   columns over `Q`.
 
-The Macaulay2 script is separate from the Jeffrey-Kirwan pairing calculation.
-It checks an exact rational linear-algebra assertion about the displayed
-relation.  Let `A` be the free graded super-commutative algebra on the even
-generators `a_r`, `f_r` and odd generators `b_r^j` used above, and let `R5`
-be the displayed degree-`22` relation.  The script verifies that
-
-```text
-macaulay2/verify_stabilizer_lie_dimension.m2
-```
-
-computes
-
-```math
-\rho_R:\mathrm{Der}^{\mathrm{gr}}(A)\longrightarrow A^{22}/\mathbb Q R_5,
-\qquad
-D\longmapsto [D(R_5)]
-```
-
-and finds
-
-```math
-\mathrm{dim}_{\mathbb Q}\ker(\rho_R)=12.
-```
-
 The optional Rust kernel is in:
 
 ```text
