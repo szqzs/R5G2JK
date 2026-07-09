@@ -137,6 +137,125 @@ vector is stored as
 zero-pairing over `Q` is checked target-by-target by
 [`relation_dot_q`](src/r5g2higgs/relation_q.py#L108).
 
+### Chern-Character Convention
+
+The relation above is written in the Jeffrey--Kirwan generators obtained from
+the Chern classes of the universal bundle.  If we instead use the
+Künneth components of the normalized Chern characters, written as
+
+```math
+\operatorname{ch}_r
+=
+1_C\otimes\beta_r
++\sum_{j=1}^4\delta_j\otimes\psi_{r,j}
++\operatorname{pt}_C\otimes\alpha_r,
+```
+
+together with the symplectic basis whose intersection matrix is
+$`\left(\begin{smallmatrix}0&I_2\\-I_2&0\end{smallmatrix}\right)`$ and set
+
+```math
+\gamma_{rs}
+=
+\psi_{r,1}\psi_{s,3}-\psi_{r,3}\psi_{s,1}
++\psi_{r,2}\psi_{s,4}-\psi_{r,4}\psi_{s,2},
+```
+
+then, with $`\operatorname{ch}_1=0`$, replacing the Chern-class generators by these
+Chern-character generators gives
+
+```math
+\begin{aligned}
+a_2&=-\beta_2,
+&b_2^j&=-\psi_{2,j},
+&f_2&=-\alpha_2,\\
+a_3&=2\beta_3,
+&b_3^j&=2\psi_{3,j},
+&f_3&=2\alpha_3,\\
+a_4&=\frac{1}{2}\beta_2^2-6\beta_4,
+&b_4^j&=\beta_2\psi_{2,j}-6\psi_{4,j},
+&f_4&=\beta_2\alpha_2-\frac{1}{2}\gamma_{22}-6\alpha_4,\\
+a_5&=24\beta_5-2\beta_2\beta_3,
+&b_5^j&=24\psi_{5,j}-2\beta_2\psi_{3,j}-2\beta_3\psi_{2,j},
+&f_5&=24\alpha_5-2\beta_2\alpha_3-2\beta_3\alpha_2+2\gamma_{23}.
+\end{aligned}
+```
+
+Here the $`\gamma_{rs}`$ occurring in the original relation are first expanded
+in the $`b_r^j`$ and then transformed using the formulas above.  Equivalently,
+if $`\Gamma_{rs}`$ denotes the contraction formed from the Chern-class
+generators $`b_r^j`$, then
+
+```math
+\begin{aligned}
+\Gamma_{22}&=\gamma_{22},
+&\Gamma_{23}&=-2\gamma_{23},\\
+\Gamma_{24}&=-\beta_2\gamma_{22}+6\gamma_{24},
+&\Gamma_{25}&=2\beta_3\gamma_{22}+2\beta_2\gamma_{23}-24\gamma_{25},\\
+\Gamma_{33}&=4\gamma_{33},
+&\Gamma_{34}&=2\beta_2\gamma_{23}-12\gamma_{34},\\
+\Gamma_{35}&=-4\beta_3\gamma_{23}-4\beta_2\gamma_{33}+48\gamma_{35},\\
+\Gamma_{44}&=\beta_2^2\gamma_{22}-12\beta_2\gamma_{24}+36\gamma_{44},\\
+\Gamma_{45}&=-2\beta_2\beta_3\gamma_{22}-2\beta_2^2\gamma_{23}
++24\beta_2\gamma_{25}+12\beta_3\gamma_{24}
++12\beta_2\gamma_{34}-144\gamma_{45},\\
+\Gamma_{55}&=4\beta_3^2\gamma_{22}+8\beta_2\beta_3\gamma_{23}
+-96\beta_3\gamma_{25}+4\beta_2^2\gamma_{33}
+-96\beta_2\gamma_{35}+576\gamma_{55}.
+\end{aligned}
+```
+
+After this change of generators, multiplying the transformed relation by `8`
+gives the following primitive integral relation in the notation of the paper:
+
+```math
+\begin{aligned}
+\Upsilon_{2,5}^{\operatorname{ch}}={}&
+130\alpha_2\beta_2^5
+-3120\alpha_2\beta_2^3\beta_4
++6720\alpha_2\beta_2^2\beta_3^2
+-180480\alpha_2\beta_2\beta_3\beta_5\\
+&+288\alpha_2\beta_2\beta_4^2
+-31104\alpha_2\beta_3^2\beta_4
++576000\alpha_2\beta_5^2\\
+&+4480\alpha_3\beta_2^3\beta_3
+-90240\alpha_3\beta_2^2\beta_5
+-62208\alpha_3\beta_2\beta_3\beta_4\\
+&+13824\alpha_3\beta_3^3
++1036800\alpha_3\beta_4\beta_5\\
+&-780\alpha_4\beta_2^4
++288\alpha_4\beta_2^2\beta_4
+-31104\alpha_4\beta_2\beta_3^2\\
+&+1036800\alpha_4\beta_3\beta_5
++440640\alpha_4\beta_4^2\\
+&-90240\alpha_5\beta_2^2\beta_3
++1152000\alpha_5\beta_2\beta_5
++1036800\alpha_5\beta_3\beta_4\\
+&-65\beta_2^4\gamma_{22}
++960\beta_2^3\gamma_{33}
+-5120\beta_2^2\beta_3\gamma_{23}
++1560\beta_2^2\beta_4\gamma_{22}\\
+&-17280\beta_2^2\gamma_{35}
++4608\beta_2^2\gamma_{44}
++480\beta_2\beta_3^2\gamma_{22}
+-19200\beta_2\beta_3\gamma_{25}\\
+&+13824\beta_2\beta_3\gamma_{34}
+-18432\beta_2\beta_4\gamma_{24}
+-14976\beta_2\beta_4\gamma_{33}\\
+&+88320\beta_2\beta_5\gamma_{23}
++161280\beta_2\gamma_{55}
+-20736\beta_3^2\gamma_{24}
+-2304\beta_3^2\gamma_{33}\\
+&+48384\beta_3\beta_4\gamma_{23}
++48000\beta_3\beta_5\gamma_{22}
++207360\beta_3\gamma_{45}\\
+&+18288\beta_4^2\gamma_{22}
++69120\beta_4\gamma_{35}
+-230400\beta_5\gamma_{25}
+-345600\beta_5\gamma_{34}.
+\end{aligned}
+```
+
 ## Result Files
 
 The compact committed result files are:
