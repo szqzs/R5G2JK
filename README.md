@@ -144,11 +144,11 @@ the Chern classes of the universal bundle.  If we instead use the
 Künneth components of the normalized Chern characters, written as
 
 ```math
-\operatorname{ch}_r
+\mathrm{ch}_r
 =
 1_C\otimes\beta_r
 +\sum_{j=1}^4\delta_j\otimes\psi_{r,j}
-+\operatorname{pt}_C\otimes\alpha_r,
++\mathrm{pt}_C\otimes\alpha_r,
 ```
 
 together with the symplectic basis whose intersection matrix is
@@ -161,7 +161,7 @@ $`\left(\begin{smallmatrix}0&I_2\\-I_2&0\end{smallmatrix}\right)`$ and set
 +\psi_{r,2}\psi_{s,4}-\psi_{r,4}\psi_{s,2},
 ```
 
-then, with $`\operatorname{ch}_1=0`$, replacing the Chern-class generators by these
+then, with $`\mathrm{ch}_1=0`$, replacing the Chern-class generators by these
 Chern-character generators gives
 
 ```math
@@ -210,7 +210,7 @@ gives the following primitive integral relation in the notation of the paper:
 
 ```math
 \begin{aligned}
-\Upsilon_{2,5}^{\operatorname{ch}}={}&
+\Upsilon_{2,5}^{\mathrm{ch}}={}&
 130\alpha_2\beta_2^5
 -3120\alpha_2\beta_2^3\beta_4
 +6720\alpha_2\beta_2^2\beta_3^2
