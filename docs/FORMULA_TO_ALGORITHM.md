@@ -597,7 +597,7 @@ H_q(Y,\delta)^{-1}
 \nabla_Y\tau_s(Y).
 ```
 
-Thus $`\Gamma_{\mathbf e}`$ is not an extra theorem.  It is just the finite
+Thus $`\Gamma_{\mathbf e}`$ is the finite
 exterior-algebra evaluation of the $`E_{\mathrm{odd}}`$ factor in the JK
 formula.  The corresponding JK odd-class restrictions are Lemma 10.12 (JK
 p. 69), and the resulting contraction formula is Lemma 10.13 (JK pp. 69-70).
